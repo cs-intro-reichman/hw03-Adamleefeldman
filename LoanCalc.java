@@ -13,9 +13,9 @@ public class LoanCalc {
      */
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
-		int n = Integer.parseInt(args[2]);
+		double loan = 10000;//Double.parseDouble(args[0]);
+		double rate = 5;//Double.parseDouble(args[1]);
+		int n = 10;//Integer.parseInt(args[2]);
 		System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
 		
@@ -41,7 +41,7 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	double g = loan/n;
-		while(endBalance(loan, rate, n, n)>0){
+		while(endBalance(loan, rate, n, g)>0){
 			g += epsilon;
 			iterationCounter++;
 		}
@@ -57,7 +57,7 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
     	double L = 0;
-		double H = 0;
+		double H = loan;
 		double g = (H+L)/2;
 
 		iterationCounter = 0;
